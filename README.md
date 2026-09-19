@@ -1,79 +1,75 @@
-#  Islami  
+# Islami
 
-A Flutter-based **Android & iOS mobile app** that helps Muslims in their daily life.  
-With **Islami**, you can read Qur’an ayat, listen to recitations, explore Hadith, call upon Allah (Dua), listen to live radio, and check prayer times with ease.  
+> A focused Flutter companion for Quran reading, Hadith, tasbeeh, live Quran audio, and daily prayer times.
 
----
+Islami brings the parts of a daily practice into one calm mobile experience. The app keeps frequently used actions close: browse or search the Quran, continue a recent surah, read Hadith, use a tasbeeh counter, listen to radio or reciters, and check current prayer times.
 
-##  Features  
+## What the app includes
 
--  **Read Qur’an Ayat** – Access and read surahs and ayats.  
--  **Recitations & Radio** – Listen to Qur’an reciters and Islamic radio channels.  
--  **Dua & Dhikr** – Call upon Allah with daily supplications.  
--  **Prayer Times** – Know the exact prayer timings.  
--  **Hadith Collection** – Explore authentic Hadiths.  
--  **Beautiful UI** – Simple and elegant Flutter design.  
+- **Quran library and reading** — browse surahs by Arabic or English name, search the list, view verse counts, and open bundled surah text.
+- **Recent reading** — recently opened surahs are saved with `SharedPreferences` so users can return to a familiar starting point.
+- **Hadith collection** — 50 bundled Hadith files are loaded into a swipeable reading experience.
+- **Tasbeeh counter** — a focused counter supports a simple, repeatable daily interaction.
+- **Radio and reciters** — live radio stations and reciter audio are retrieved from MP3Quran and played in the app.
+- **Prayer times** — the app fetches the current day’s Cairo, Egypt timings and displays Gregorian, Hijri, and next-prayer context.
+- **Onboarding persistence** — completed onboarding is stored locally so returning users continue directly to the app.
 
----
+## Built with
 
-##  APIs Used  
+- Flutter and Dart
+- `http` for REST API communication
+- `audioplayers` for radio and reciter playback
+- `shared_preferences` for onboarding and recent-surah persistence
+- `carousel_slider` and `smooth_page_indicator` for focused content navigation
+- Local Arabic Quran and Hadith assets
 
--  **Radio & Recitations**: [MP3 Quran API](https://mp3quran.net/ar/api)  
--  **Prayer Times**: [Aladhan API](https://api.aladhan.com/v1/timingsByCity/16-07-2024?city=cairo&country=egypt)  
--  **Reciters API**: [Reciters List](https://www.mp3quran.net/api/v3/reciters?language=ar)  
--  **Radios API**: [Radios List](https://mp3quran.net/api/v3/radios?language=ar)  
+## Data sources
 
----
+- [Aladhan API](https://aladhan.com/prayer-times-api) for daily prayer times
+- [MP3Quran API](https://mp3quran.net/eng/api) for radio stations and reciters
 
-## 📸 Screenshots  
+> Prayer-time requests are currently configured for Cairo, Egypt in `lib/UI/Time/TimeScreen.dart`.
 
-###  Home Screen
-![Home](images/HomeScreen.png)
+## Project structure
 
-###  Qur’an
-![Quran](images/soura_details.png)
+```text
+lib/
+├── Core/
+│   ├── Assets/              # App colors, image paths, and icons
+│   └── Services/            # SharedPreferences wrapper and storage keys
+└── UI/
+    ├── Homescreen/          # Bottom-navigation shell
+    ├── Quran/               # Surah library, search, recent list, and reading view
+    ├── Hadeeh/              # Asset-backed Hadith carousel
+    ├── Sabeeh/              # Tasbeeh counter
+    ├── Radio/               # Radio/reciter API clients and audio controls
+    └── Time/                # Prayer-time request, parsing, and presentation
+```
 
-###  Qur’an search
-![Quran](images/search_homeScreen.png)
+## Screens
 
-###  Prayer Times
-![Prayer Times](images/timeScreen.png)
+<p align="center">
+  <img src="images/portfolio/home-hd.png" width="180" alt="Quran library screen" />
+  <img src="images/portfolio/sura-details-hd.png" width="180" alt="Quran reading screen" />
+  <img src="images/portfolio/quran-search-hd.png" width="180" alt="Quran search screen" />
+  <img src="images/portfolio/hadith-hd.png" width="180" alt="Hadith screen" />
+</p>
 
-###  Hadith
-![Hadith](images/haith_screen.png)
+<p align="center">
+  <img src="images/portfolio/prayer-times-hd.png" width="330" alt="Prayer times screen" />
+  <img src="images/portfolio/radio-hd.png" width="180" alt="Radio screen" />
+  <img src="images/portfolio/tasbeeh-hd.png" width="180" alt="Tasbeeh screen" />
+</p>
 
-###  Radio
-![Radio](images/radio.png)
-
-###  Reciters
-![Reciters](images/radio.png)
-
-###  Tasbeeh
-![Tasbeeh](images/sebah.png)
-
-
-
-
----
-
-##  Getting Started  
-
-### 1️ Prerequisites  
-- Flutter SDK (latest version)  
-- Android Studio / VS Code  
-- Emulator or physical device  
-
-### 2️ Installation  
+## Run locally
 
 ```bash
-# Clone the repository
 git clone https://github.com/Abdallahkhale/Islami.git
-
-# Navigate to project directory
-cd islami
-
-# Get dependencies
+cd Islami
 flutter pub get
-
-# Run the app
 flutter run
+```
+
+## Portfolio case study
+
+See the product flow and screen gallery in the [Islami portfolio case study](https://abdallah-khaled-flutter.vercel.app/projects/islami).
